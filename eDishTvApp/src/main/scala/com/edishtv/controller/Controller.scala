@@ -13,7 +13,7 @@ object Controller {
 
   def menu() : Unit = {
     var choice : String = ""
-    do {
+    while (choice != "5") do {
       println("Please select your option :")
       println("1 - Register as User")
       println("2 - User Login")
@@ -33,7 +33,7 @@ object Controller {
         case _ => println("Please enter choice among given options")
       }
       println()
-    } while (choice != "5")
+    }
   }
 
 }

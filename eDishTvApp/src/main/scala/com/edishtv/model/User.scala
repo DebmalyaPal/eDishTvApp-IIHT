@@ -13,14 +13,14 @@ class User (var emailId : String,
             firstName : String,
             lastName : String,
             password : String
-           ) {
+           ) = {
     this(emailId, firstName, lastName, password)
     this.userId = userId
   }
 
   def this(emailId: String,
            password: String
-          ) {
+          ) = {
     this(emailId, "", "", password)
   }
 

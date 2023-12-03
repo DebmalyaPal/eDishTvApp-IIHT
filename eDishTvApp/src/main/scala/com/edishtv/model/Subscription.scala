@@ -17,7 +17,7 @@ class Subscription (var userId : Int,
            charge : Int,
            startDate : Date,
            expiryDate : Date
-          ) {
+          ) = {
     this(userId, channelId, charge, startDate, expiryDate)
     this.subscriptionId = subscriptionId
   }

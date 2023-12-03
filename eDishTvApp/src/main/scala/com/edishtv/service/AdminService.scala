@@ -46,7 +46,7 @@ object AdminService {
 
   def menu(admin : Admin) : Unit = {
     var choice: String = "0"
-    do {
+    while (choice != "4") do {
       println()
       println("--- Welcome to eDishTV (logged in as Admin) ---")
       println("1 - Add a new TV Channel")
@@ -63,7 +63,7 @@ object AdminService {
         case "4" => AdminService.signout(admin)
         case _ => println("Please enter choice among given options")
       }
-    } while (choice != "4")
+    }
   }
 
 }

@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a07d959-4588-48d5-9ee7-addfc0487e85" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/App.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/App.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/controller/Controller.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/controller/Controller.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/AdminDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/AdminDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/ChannelDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/ChannelDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/SubscriptionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/SubscriptionDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/TransactionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/TransactionDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/UserDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/UserDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/WalletDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/WalletDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/model/Subscription.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/model/Subscription.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/model/User.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/model/User.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/AdminService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/AdminService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/ChannelService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/ChannelService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/SubscriptionService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/SubscriptionService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/TransactionService.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/UserService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/UserService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/WalletService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/WalletService.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -55,13 +48,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/2130359/OneDrive - Cognizant/Desktop/Learning/Scala-Tutorial/eDishTvApp-IIHT-Mod/eDishTvApp-IIHT/eDishTvApp"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.com.edishtv.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
@@ -95,6 +89,9 @@
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="scala3DisclaimerShown" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

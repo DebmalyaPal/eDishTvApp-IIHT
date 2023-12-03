@@ -13,7 +13,6 @@ INSERT INTO admin (email, password) VALUES
 ('admin@iiht.com', 'iiht@1234'),
 ('admin@cts.com', 'cts@5678');
 
-SELECT * FROM admin;
 
 CREATE TABLE user (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,11 +22,13 @@ CREATE TABLE user (
     last_name VARCHAR(25)
 );
 
+
 CREATE TABLE wallet (
 	user_id INT UNIQUE,
     amount INT NOT NULL DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
 
 CREATE TABLE channel (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,6 +38,7 @@ CREATE TABLE channel (
     description VARCHAR(50),
     monthly_subscription_fee INT
 );
+
 
 CREATE TABLE subscription (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -48,6 +50,7 @@ CREATE TABLE subscription (
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (channel_id) REFERENCES channel(id)
 );
+
 
 CREATE TABLE transaction (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,7 +64,10 @@ CREATE TABLE transaction (
     FOREIGN KEY (channel_id) REFERENCES channel(id)
 );
 
+
+#SELECT * FROM admin;
 #SELECT * FROM User;
 #SELECT * FROM wallet;
 #SELECT * FROM channel;
 #SELECT * FROM subscription;
+#SELECT * FROM transaction;

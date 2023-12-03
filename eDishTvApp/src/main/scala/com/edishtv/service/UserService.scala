@@ -78,7 +78,7 @@ object UserService {
 
   def menu(user : User): Unit = {
     var choice: String = "0"
-    do {
+    while (choice != "7") do {
       println()
       println("--- Welcome to eDishTV (logged in as User) ---")
       println("1 - Subscribe to a new TV Channel")
@@ -101,7 +101,7 @@ object UserService {
         case "7" => UserService.signout(user)
         case _ => println("Please enter choice among given options")
       }
-    } while (choice != "7")
+    }
     println()
   }
 
