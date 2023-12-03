@@ -1,6 +1,8 @@
 package com.edishtv.dao
 
-import java.sql.{Connection, DriverManager, Statement}
+import java.sql.{Connection, DriverManager, Statement, Timestamp}
+import org.slf4j.LoggerFactory
+
 import com.edishtv.model.{Channel, User}
 
 
@@ -19,6 +21,9 @@ object TransactionDao {
   private var connection: Connection = _
   private var statement: Statement = _
 
+  private val logger = LoggerFactory.getLogger(classOf[TransactionDao])
+  private var timestamp_now: Timestamp = _
+
   private def establishConnection(): Unit = {
     try {
       Class.forName(driver)
@@ -26,7 +31,10 @@ object TransactionDao {
       statement = connection.createStatement()
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Failed to establish connection - $e")
+      }
     }
   }
 
@@ -50,7 +58,11 @@ object TransactionDao {
       isSuccess = true
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} :  Error while storing " +
+          s"Transaction record for User (Id - ${user.getUserId()} - $e")
+      }
     }
     isSuccess
   }

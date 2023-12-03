@@ -1,8 +1,10 @@
 package com.edishtv.dao
 
-import java.sql.{Connection, Date, DriverManager, ResultSet, Statement}
 import scala.collection.mutable.ListBuffer
-import com.edishtv.model.{Channel, Subscription, User}
+import org.slf4j.LoggerFactory
+import java.sql.{Connection, Date, DriverManager, ResultSet, Statement, Timestamp}
+
+import com.edishtv.model.{User, Channel, Subscription}
 
 
 class SubscriptionDao {
@@ -20,6 +22,9 @@ object SubscriptionDao {
   private var connection: Connection = _
   private var statement: Statement = _
 
+  private val logger = LoggerFactory.getLogger(classOf[SubscriptionDao])
+  private var timestamp_now : Timestamp = _
+
   private def establishConnection(): Unit = {
     try {
       Class.forName(driver)
@@ -27,9 +32,11 @@ object SubscriptionDao {
       statement = connection.createStatement()
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Failed to establish connection - $e")
+      }
     }
-
   }
 
   def subscribe(user : User, channel : Channel): Boolean = {
@@ -43,18 +50,18 @@ object SubscriptionDao {
       //val currentDate : Date = ??
       //val expiryDate : Date =
 
+      // Deleting all outdated subscriptions
+      var query: String = s"DELETE FROM subscription WHERE CURDATE() > expiry_date;"
+      statement.executeUpdate(query)
+
       // Checking if the user has already subscribed to the channel
-      var query: String = s"SELECT * FROM subscription " +
+      query = s"SELECT * FROM subscription " +
         s"WHERE user_id=$userId AND channel_id=$channelId AND " +
-        s"start_date >= CURDATE() AND CURDATE() <= expiry_date;"
-      val resultSet: ResultSet = statement.executeQuery(query)
+        s"start_date <= CURDATE() AND CURDATE() <= expiry_date;"
+      val resultSet : ResultSet = statement.executeQuery(query)
       if (resultSet.next())
         isSuccess = false
       else {
-        // Deleting all outdated subscriptions
-        query = s"DELETE FROM subscription WHERE CURDATE() > expiry_date;"
-        statement.executeUpdate(query)
-
         //Inserting subscription record into 'subscription' table
         query = s"INSERT INTO subscription (user_id, channel_id, cost, start_date, expiry_date) VALUES " +
           s"($userId, $channelId, $cost, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY));"
@@ -63,7 +70,11 @@ object SubscriptionDao {
       }
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while User (Id - ${user.getUserId()} tried " +
+          s"subscribing to TV Channel (Id - ${channel.getChannelId()}, Number - ${channel.getChannelNumber()}) - $e")
+      }
     }
     isSuccess
   }
@@ -88,7 +99,11 @@ object SubscriptionDao {
       }
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while User (Id - ${user.getUserId()} tried " +
+          s"Unsubscribing TV Channel (Id - $channelId) - $e")
+      }
     }
     isSuccess
   }
@@ -114,7 +129,11 @@ object SubscriptionDao {
       }
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while fetching all subscriptions for " +
+          s"User (Id - ${user.getUserId()} - $e")
+      }
     }
     subscriptionList
   }

@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a07d959-4588-48d5-9ee7-addfc0487e85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/App.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/samples/junit.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/samples/scalatest.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/samples/specs.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/App.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/App.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/controller/Controller.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/controller/Controller.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/AdminDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/AdminDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/ChannelDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/ChannelDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/SubscriptionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/SubscriptionDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/TransactionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/TransactionDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/UserDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/UserDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/WalletDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/WalletDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/AdminService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/AdminService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/ChannelService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/ChannelService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/SubscriptionService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/SubscriptionService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/TransactionService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/UserService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/UserService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/WalletService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/WalletService.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

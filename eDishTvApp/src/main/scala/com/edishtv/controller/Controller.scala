@@ -2,23 +2,17 @@ package com.edishtv.controller
 
 import scala.io.StdIn.readLine
 
-import com.edishtv.service.AdminService
-import com.edishtv.service.UserService
-import com.edishtv.service.ChannelService
+import com.edishtv.service.{AdminService, UserService, ChannelService}
+
 
 class Controller {
-
-  import com.edishtv.controller._;
-
+  import com.edishtv.controller
 }
 
 object Controller {
 
   def menu() : Unit = {
-    println("Controller...")
-
     var choice : String = ""
-
     do {
       println("Please select your option :")
       println("1 - Register as User")
@@ -27,9 +21,7 @@ object Controller {
       println("4 - View all existing TV Channels")
       println("5 - Exit")
       print("Enter you option = ")
-
       choice = readLine()
-
       println()
 
       choice match {
@@ -40,11 +32,8 @@ object Controller {
         case "5" => println("Thank You!")
         case _ => println("Please enter choice among given options")
       }
-
       println()
-
     } while (choice != "5")
-
   }
 
 }

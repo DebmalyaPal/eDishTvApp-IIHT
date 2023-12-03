@@ -1,7 +1,8 @@
 package com.edishtv.dao
 
-import java.sql.{Connection, DriverManager, ResultSet, Statement}
 import scala.collection.mutable.ListBuffer
+import org.slf4j.LoggerFactory
+import java.sql.{Connection, DriverManager, ResultSet, Statement, Timestamp}
 
 import com.edishtv.model.Channel
 
@@ -21,6 +22,9 @@ object ChannelDao {
   private var connection: Connection = _
   private var statement: Statement = _
 
+  private val logger = LoggerFactory.getLogger(classOf[ChannelDao])
+  private var timestamp_now : Timestamp = _
+
   private def establishConnection(): Unit = {
     try {
       Class.forName(driver)
@@ -28,7 +32,10 @@ object ChannelDao {
       statement = connection.createStatement()
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Failed to establish connection - $e")
+      }
     }
   }
 
@@ -59,7 +66,10 @@ object ChannelDao {
       }
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error Viewing List of Channels - $e")
+      }
     }
     channelList
   }
@@ -89,7 +99,10 @@ object ChannelDao {
       }
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error fetching Channel by Id - $e")
+      }
     }
     channel
   }
@@ -120,7 +133,10 @@ object ChannelDao {
       }
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while Adding New Channel - $e")
+      }
     }
     channel
   }
@@ -169,7 +185,11 @@ object ChannelDao {
       }
     }
     catch {
-      case e : Exception => e.printStackTrace()
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while Updating Channel " +
+          s"(Id - ${updatedChannel.getChannelId()}, Number - ${updatedChannel.getChannelNumber()})  - $e")
+      }
     }
     isSuccess
   }
@@ -184,7 +204,10 @@ object ChannelDao {
         isSuccess = true
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while Deleting Channel (Id - $channelId)  - $e")
+      }
     }
     isSuccess
   }

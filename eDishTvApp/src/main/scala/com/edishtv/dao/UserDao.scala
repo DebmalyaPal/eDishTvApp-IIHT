@@ -1,7 +1,8 @@
 package com.edishtv.dao
 
-import java.sql.{Connection, DriverManager, ResultSet, Statement}
+import java.sql.{Connection, DriverManager, ResultSet, Statement, Timestamp}
 import com.edishtv.model.User
+import org.slf4j.LoggerFactory
 
 
 class UserDao {
@@ -19,6 +20,9 @@ object UserDao {
   private var connection: Connection = _
   private var statement: Statement = _
 
+  private val logger = LoggerFactory.getLogger(classOf[UserDao])
+  private var timestamp_now : Timestamp = _
+
   private def establishConnection(): Unit = {
     try {
       Class.forName(driver)
@@ -26,7 +30,10 @@ object UserDao {
       statement = connection.createStatement()
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Failed to establish connection - $e")
+      }
     }
   }
 
@@ -61,7 +68,10 @@ object UserDao {
       }
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while Registering a New User - $e")
+      }
     }
     isSuccess
   }
@@ -85,7 +95,10 @@ object UserDao {
       }
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while Logging In User - $e")
+      }
     }
     currentUser
   }

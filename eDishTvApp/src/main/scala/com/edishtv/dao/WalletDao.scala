@@ -1,6 +1,8 @@
 package com.edishtv.dao
 
-import java.sql.{Connection, DriverManager, ResultSet, Statement}
+import org.slf4j.LoggerFactory
+import java.sql.{Connection, DriverManager, ResultSet, Statement, Timestamp}
+
 import com.edishtv.model.{User, Wallet}
 
 
@@ -18,6 +20,9 @@ object WalletDao {
   private var connection: Connection = _
   private var statement: Statement = _
 
+  private val logger = LoggerFactory.getLogger(classOf[WalletDao])
+  private var timestamp_now : Timestamp = _
+
   private def establishConnection(): Unit = {
     try {
       Class.forName(driver)
@@ -25,7 +30,10 @@ object WalletDao {
       statement = connection.createStatement()
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Failed to establish connection - $e")
+      }
     }
   }
 
@@ -39,7 +47,10 @@ object WalletDao {
       isSuccess = true
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while creating wallet for User (Id - $userId) - $e")
+      }
     }
     isSuccess
   }
@@ -63,7 +74,11 @@ object WalletDao {
       isSuccess = true
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while adding money to wallet " +
+          s"for User (Id - ${currentUser.getUserId()}) - $e")
+      }
     }
     isSuccess
   }
@@ -88,7 +103,11 @@ object WalletDao {
       }
     }
     catch {
-      case e: Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while deducting balance from wallet " +
+          s"for User (Id - ${currentUser.getUserId()}) - $e")
+      }
     }
     isSuccess
   }
@@ -104,7 +123,11 @@ object WalletDao {
         balance = resultSet.getInt("amount")
     }
     catch {
-      case e : Exception => println(e)
+      case e: Exception => {
+        timestamp_now = new Timestamp(System.currentTimeMillis())
+        logger.error(s"${timestamp_now.toString} : Error while fetching balance in wallet for " +
+          s"User (Id - ${currentUser.getUserId()}) - $e")
+      }
     }
     balance
   }
