@@ -1,4 +1,4 @@
-package com.edishtv.dao
+package com.edishtv.repository
 
 import org.slf4j.LoggerFactory
 import java.sql.{Connection, DriverManager, ResultSet, Statement, Timestamp}
@@ -7,7 +7,7 @@ import com.edishtv.model.{User, Wallet}
 
 
 class WalletDao {
-  import com.edishtv.dao.WalletDao
+  import com.edishtv.repository.WalletDao
 }
 
 object WalletDao {
@@ -84,7 +84,7 @@ object WalletDao {
   }
 
   def deductBalance(currentUser : User, amount : Int) : Boolean = {
-    var isSuccess: Boolean = false
+    var isSuccess : Boolean = false
     try {
       establishConnection()
       val userId : Int = currentUser.getUserId()

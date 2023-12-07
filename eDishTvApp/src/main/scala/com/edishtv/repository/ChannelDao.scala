@@ -1,4 +1,4 @@
-package com.edishtv.dao
+package com.edishtv.repository
 
 import scala.collection.mutable.ListBuffer
 import org.slf4j.LoggerFactory
@@ -8,7 +8,7 @@ import com.edishtv.model.Channel
 
 
 class ChannelDao {
-  import com.edishtv.dao.ChannelDao
+  import com.edishtv.repository.ChannelDao
 }
 
 
@@ -121,7 +121,7 @@ object ChannelDao {
 
       establishConnection()
       var query : String =
-        s"SELECT * FROM channel WHERE channel_number = '$channelNumber'"
+        s"SELECT * FROM channel WHERE channel_number='$channelNumber'"
       val resultSet : ResultSet = statement.executeQuery(query)
       if (resultSet.next()) doAlreadyExist = true
 
@@ -141,8 +141,8 @@ object ChannelDao {
     channel
   }
 
-  def updateChannel(updatedChannel : Channel) : Boolean = {
-    var isSuccess : Boolean = false
+  def updateChannel(updatedChannel : Channel) : Channel = {
+    var channel : Channel = null
     try {
       var doAlreadyExist: Boolean = false
 
@@ -180,7 +180,7 @@ object ChannelDao {
             s"language='$updatedLanguage', description='$updatedDescription', " +
             s"monthly_subscription_fee=$updatedMonthlySubscriptionFee WHERE id = $channelId;"
           statement.executeUpdate(query)
-          isSuccess = true
+          channel = updatedChannel
         }
       }
     }
@@ -191,7 +191,7 @@ object ChannelDao {
           s"(Id - ${updatedChannel.getChannelId()}, Number - ${updatedChannel.getChannelNumber()})  - $e")
       }
     }
-    isSuccess
+    channel
   }
 
   def deleteChannel(channelId : Int) : Boolean = {

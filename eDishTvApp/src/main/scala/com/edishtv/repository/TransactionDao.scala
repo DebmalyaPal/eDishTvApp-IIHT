@@ -1,4 +1,4 @@
-package com.edishtv.dao
+package com.edishtv.repository
 
 import java.sql.{Connection, DriverManager, Statement, Timestamp}
 import org.slf4j.LoggerFactory
@@ -7,7 +7,7 @@ import com.edishtv.model.{Channel, User}
 
 
 class TransactionDao {
-  import com.edishtv.dao.TransactionDao
+  import com.edishtv.repository.TransactionDao
 }
 
 
@@ -24,7 +24,7 @@ object TransactionDao {
   private val logger = LoggerFactory.getLogger(classOf[TransactionDao])
   private var timestamp_now: Timestamp = _
 
-  private def establishConnection(): Unit = {
+  private def establishConnection() : Unit = {
     try {
       Class.forName(driver)
       connection = DriverManager.getConnection(url, username, password)
@@ -38,7 +38,7 @@ object TransactionDao {
     }
   }
 
-  def addTransaction(user: User, channel: Channel): Boolean = {
+  def addTransaction(user : User, channel : Channel, numberOfMonths : Int) : Boolean = {
     var isSuccess: Boolean = false
     try {
       establishConnection()
@@ -46,6 +46,7 @@ object TransactionDao {
       val userId: Int = user.getUserId()
       val channelId: Int = channel.getChannelId()
       val price: Int = channel.getMonthlySubscriptionFee()
+      val totalNumberOfDays = 30 * numberOfMonths
       //val transaction : Date = ?? CURDATE()
       //val currentDate : Date = ?? CURDATE()
       //val expiryDate : Date = ??  DATE_ADD(CURDATE(), INTERVAL 30 DAY)
@@ -53,12 +54,12 @@ object TransactionDao {
       // Adding to Transaction Record
       var query: String = s"INSERT INTO transaction " +
         s"(user_id, channel_id, price, transaction_date, start_date, expiry_date) VALUES " +
-        s"($userId, $channelId, $price, CURDATE(), CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY));"
+        s"($userId, $channelId, $price, CURDATE(), CURDATE(), DATE_ADD(CURDATE(), INTERVAL $totalNumberOfDays DAY));"
       statement.executeUpdate(query)
       isSuccess = true
     }
     catch {
-      case e: Exception => {
+      case e : Exception => {
         timestamp_now = new Timestamp(System.currentTimeMillis())
         logger.error(s"${timestamp_now.toString} :  Error while storing " +
           s"Transaction record for User (Id - ${user.getUserId()} - $e")

@@ -1,7 +1,7 @@
 package com.edishtv.service
 
-import org.slf4j.LoggerFactory
-import java.sql.Timestamp
+import com.edishtv.model.{Channel, User}
+import com.edishtv.repository.TransactionDao
 
 
 class TransactionService {
@@ -9,7 +9,8 @@ class TransactionService {
 
 object TransactionService {
 
-  private val logger = LoggerFactory.getLogger(classOf[TransactionService])
-  private var timestamp_now : Timestamp = _
+  def addTransaction(user : User, channel : Channel, numberOfMonths : Int) : Unit = {
+    TransactionDao.addTransaction(user, channel, numberOfMonths)
+  }
 
 }

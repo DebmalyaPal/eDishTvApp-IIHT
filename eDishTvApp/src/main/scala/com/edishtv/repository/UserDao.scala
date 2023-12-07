@@ -1,12 +1,13 @@
-package com.edishtv.dao
+package com.edishtv.repository
 
 import java.sql.{Connection, DriverManager, ResultSet, Statement, Timestamp}
-import com.edishtv.model.User
 import org.slf4j.LoggerFactory
+
+import com.edishtv.model.User
 
 
 class UserDao {
-  import com.edishtv.dao.UserDao
+  import com.edishtv.repository.UserDao
 }
 
 
@@ -76,7 +77,7 @@ object UserDao {
     isSuccess
   }
 
-  def signin(user: User): User = {
+  def signin(user : User) : User = {
     var currentUser : User = null
     try {
       val email = user.getEmail()

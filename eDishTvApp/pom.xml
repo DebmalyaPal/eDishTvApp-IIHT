@@ -28,6 +28,13 @@
       <version>3.1.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest-core -->
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest-core_3</artifactId>
+      <version>3.2.17</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
     <dependency>
       <groupId>com.mysql</groupId>

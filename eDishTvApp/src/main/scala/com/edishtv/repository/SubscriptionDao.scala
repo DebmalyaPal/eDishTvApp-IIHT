@@ -1,4 +1,4 @@
-package com.edishtv.dao
+package com.edishtv.repository
 
 import scala.collection.mutable.ListBuffer
 import org.slf4j.LoggerFactory
@@ -8,7 +8,7 @@ import com.edishtv.model.{User, Channel, Subscription}
 
 
 class SubscriptionDao {
-  import com.edishtv.dao.SubscriptionDao
+  import com.edishtv.repository.SubscriptionDao
 }
 
 
@@ -39,7 +39,7 @@ object SubscriptionDao {
     }
   }
 
-  def subscribe(user : User, channel : Channel): Boolean = {
+  def subscribe(user : User, channel : Channel, numberOfMonths : Int) : Boolean = {
     var isSuccess: Boolean = false
     try {
       establishConnection()
@@ -47,6 +47,7 @@ object SubscriptionDao {
       val userId: Int = user.getUserId()
       val channelId: Int = channel.getChannelId()
       val cost: Int = channel.getMonthlySubscriptionFee()
+      val totalNumberOfDays : Int = 30 * numberOfMonths
       //val currentDate : Date = ??
       //val expiryDate : Date =
 
@@ -64,7 +65,7 @@ object SubscriptionDao {
       else {
         //Inserting subscription record into 'subscription' table
         query = s"INSERT INTO subscription (user_id, channel_id, cost, start_date, expiry_date) VALUES " +
-          s"($userId, $channelId, $cost, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY));"
+          s"($userId, $channelId, $cost, CURDATE(), DATE_ADD(CURDATE(), INTERVAL $totalNumberOfDays DAY));"
         statement.executeUpdate(query)
         isSuccess = true
       }
@@ -80,7 +81,7 @@ object SubscriptionDao {
   }
 
   def unsubscribe(user : User, channelId : Int): Boolean = {
-    var isSuccess: Boolean = false
+    var isSuccess : Boolean = false
     try {
       val userId: Int = user.getUserId()
 
@@ -137,6 +138,5 @@ object SubscriptionDao {
     }
     subscriptionList
   }
-
 
 }

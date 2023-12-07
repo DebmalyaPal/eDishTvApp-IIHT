@@ -1,16 +1,14 @@
-package com.edishtv.dao
-
+package com.edishtv.repository
 
 import org.slf4j.LoggerFactory
-
 import java.sql.{Connection, DriverManager, ResultSet, Statement, Timestamp}
+
 import com.edishtv.model.Admin
 
 
 class AdminDao {
-  import com.edishtv.dao.AdminDao
+  import com.edishtv.repository.AdminDao
 }
-
 
 object AdminDao {
   private val driver = "com.mysql.cj.jdbc.Driver"

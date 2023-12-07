@@ -2,8 +2,6 @@ package com.edishtv.controller
 
 import scala.io.StdIn.readLine
 
-import com.edishtv.service.{AdminService, UserService, ChannelService}
-
 
 class Controller {
   import com.edishtv.controller
@@ -25,10 +23,10 @@ object Controller {
       println()
 
       choice match {
-        case "1" => UserService.signup()
-        case "2" => UserService.signin()
-        case "3" => AdminService.signin()
-        case "4" => ChannelService.viewChannelList()
+        case "1" => UserController.signup()
+        case "2" => UserController.signin()
+        case "3" => AdminController.signin()
+        case "4" => ChannelController.viewChannelList()
         case "5" => println("Thank You!")
         case _ => println("Please enter choice among given options")
       }

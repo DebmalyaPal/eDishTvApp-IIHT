@@ -4,7 +4,7 @@
     <profile name="Maven 1" modules="eDishTvApp">
       <parameters>
         <parameter value="-dependencyfile" />
-        <parameter value="C:\Users\2130359\OneDrive - Cognizant\Desktop\Learning\Scala-Tutorial\eDishTvApp-IIHT-Mod\eDishTvApp-IIHT\eDishTvApp\target/.scala_dependencies" />
+        <parameter value="C:\Users\2130359\OneDrive - Cognizant\Desktop\GitHub Projects\eDishTvApp-IIHT\eDishTvApp\target/.scala_dependencies" />
       </parameters>
     </profile>
   </component>
