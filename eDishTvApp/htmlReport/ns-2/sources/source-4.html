@@ -1,0 +1,260 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > SubscriptionController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.edishtv.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: SubscriptionController (com.edishtv.controller)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SubscriptionController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SubscriptionController$</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/72)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/73)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.edishtv.controller
+&nbsp;
+&nbsp;import java.sql.{Date, Timestamp}
+&nbsp;import org.slf4j.LoggerFactory
+&nbsp;import scala.collection.mutable.ListBuffer
+&nbsp;import scala.io.StdIn.readLine
+&nbsp;
+&nbsp;import com.edishtv.model.{Channel, Subscription, User}
+&nbsp;import com.edishtv.service.{ChannelService, SubscriptionService, TransactionService, WalletService}
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;class SubscriptionController {</b>
+&nbsp;  import com.edishtv.controller.SubscriptionController
+&nbsp;}
+&nbsp;
+<b class="nc">&nbsp;object SubscriptionController {</b>
+&nbsp;
+<b class="nc">&nbsp;  private val logger = LoggerFactory.getLogger(classOf[SubscriptionController])</b>
+&nbsp;  private var timestamp_now: Timestamp = _
+&nbsp;
+<b class="nc">&nbsp;  def subscribe(user : User) : Unit = {</b>
+<b class="nc">&nbsp;    try {</b>
+<b class="nc">&nbsp;      print(&quot;Enter Channel Id to Subscribe = &quot;)</b>
+<b class="nc">&nbsp;      val channelId: Int = readLine().toInt</b>
+<b class="nc">&nbsp;      val channelToSubscribe : Channel = ChannelService.getChannelById(channelId)</b>
+&nbsp;
+<b class="nc">&nbsp;      if (channelToSubscribe != null) {</b>
+<b class="nc">&nbsp;        print(&quot;Number of months = &quot;)</b>
+<b class="nc">&nbsp;        val numberOfMonths : Int = readLine().toInt</b>
+&nbsp;
+<b class="nc">&nbsp;        val monthlyCharge : Int = channelToSubscribe.getMonthlySubscriptionFee()</b>
+<b class="nc">&nbsp;        val totalCharge : Int = monthlyCharge * numberOfMonths</b>
+&nbsp;
+<b class="nc">&nbsp;        val isEnoughBalance : Boolean = WalletService.deductBalance(user, totalCharge)</b>
+<b class="nc">&nbsp;        if (isEnoughBalance) {</b>
+<b class="nc">&nbsp;          val isSuccess : Boolean = SubscriptionService.subscribe(user, channelToSubscribe, numberOfMonths)</b>
+<b class="nc">&nbsp;          if (isSuccess) {</b>
+<b class="nc">&nbsp;            TransactionService.addTransaction(user, channelToSubscribe, numberOfMonths)</b>
+&nbsp;
+<b class="nc">&nbsp;            timestamp_now = new Timestamp(System.currentTimeMillis())</b>
+<b class="nc">&nbsp;            logger.info(s&quot;${timestamp_now.toString} : User (id - ${user.getUserId()}) &quot; +</b>
+<b class="nc">&nbsp;              s&quot;subscribed to TV Channel with Channel No. ${channelToSubscribe.getChannelNumber()}&quot;)</b>
+&nbsp;
+<b class="nc">&nbsp;            println(s&quot;TV Channel with Channel No. ${channelToSubscribe.getChannelNumber()} &quot; +</b>
+<b class="nc">&nbsp;              s&quot;Subscribed Successfully!&quot;)</b>
+&nbsp;          }
+&nbsp;          else
+<b class="nc">&nbsp;            println(&quot;Failed to Subscribe to Channel.&quot;)</b>
+&nbsp;        }
+&nbsp;        else {
+<b class="nc">&nbsp;          timestamp_now = new Timestamp(System.currentTimeMillis())</b>
+<b class="nc">&nbsp;          logger.info(s&quot;${timestamp_now.toString} : User(Id - ${user.getUserId()}) &quot; +</b>
+<b class="nc">&nbsp;            s&quot;failed to subscribe TV Channel (Number - ${channelToSubscribe.getChannelNumber()} &quot; +</b>
+<b class="nc">&nbsp;            s&quot;due to insufficient balance.&quot;)</b>
+&nbsp;
+<b class="nc">&nbsp;          println(&quot;Insufficient Balance! Please Add Balance and Re-try!&quot;)</b>
+&nbsp;        }
+&nbsp;      }
+&nbsp;      else
+<b class="nc">&nbsp;        println(&quot;Wrong Channel Id!&quot;)</b>
+&nbsp;    }
+&nbsp;    catch {
+&nbsp;      case e: Exception =&gt; {
+<b class="nc">&nbsp;        timestamp_now = new Timestamp(System.currentTimeMillis())</b>
+<b class="nc">&nbsp;        logger.error(s&quot;${timestamp_now.toString} : Error while Subscribing to &quot; +</b>
+<b class="nc">&nbsp;          s&quot;TV Channel by User(${user.getUserId()}) - $e&quot;)</b>
+&nbsp;      }
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+<b class="nc">&nbsp;  def unsubscribe(user : User) : Unit = {</b>
+<b class="nc">&nbsp;    try {</b>
+<b class="nc">&nbsp;      print(&quot;Enter Channel Id to Unsubscribe = &quot;)</b>
+<b class="nc">&nbsp;      val channelId: Int = readLine().toInt</b>
+<b class="nc">&nbsp;      val channelToUnsubscribe : Channel = ChannelService.getChannelById(channelId)</b>
+&nbsp;
+<b class="nc">&nbsp;      if (channelToUnsubscribe != null) {</b>
+<b class="nc">&nbsp;        val isSuccess : Boolean = SubscriptionService.unsubscribe(user, channelId)</b>
+<b class="nc">&nbsp;        if (isSuccess) {</b>
+<b class="nc">&nbsp;          timestamp_now = new Timestamp(System.currentTimeMillis())</b>
+<b class="nc">&nbsp;          logger.info(s&quot;${timestamp_now.toString} : User (id - ${user.getUserId()}) &quot; +</b>
+<b class="nc">&nbsp;            s&quot;Unsubscribed TV Channel with Channel No. $channelId&quot;)</b>
+&nbsp;
+<b class="nc">&nbsp;          println(s&quot;TV Channel with Channel No. ${channelToUnsubscribe.getChannelNumber()} &quot; +</b>
+<b class="nc">&nbsp;            &quot;Unsubscribed Successfully!&quot;)</b>
+&nbsp;        }
+&nbsp;        else
+<b class="nc">&nbsp;          println(&quot;Channel Not Subscribed.&quot;)</b>
+&nbsp;      }
+&nbsp;      else
+<b class="nc">&nbsp;        println(&quot;Wrong Channel Id!&quot;)</b>
+&nbsp;    }
+&nbsp;    catch {
+&nbsp;      case e: Exception =&gt; {
+<b class="nc">&nbsp;        timestamp_now = new Timestamp(System.currentTimeMillis())</b>
+<b class="nc">&nbsp;        logger.error(s&quot;${timestamp_now.toString} : Error while Unsubscribing &quot; +</b>
+<b class="nc">&nbsp;          s&quot;TV Channel by User(${user.getUserId()}) - $e&quot;)</b>
+&nbsp;      }
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+<b class="nc">&nbsp;  def viewSubscription(user : User) : Unit = {</b>
+<b class="nc">&nbsp;    val subscriptionList : ListBuffer[Subscription] = SubscriptionService.viewSubscription(user)</b>
+<b class="nc">&nbsp;    if (subscriptionList.isEmpty)</b>
+<b class="nc">&nbsp;      println(&quot;You are yet to make any Subscriptions!&quot;)</b>
+&nbsp;    else {
+<b class="nc">&nbsp;      var channel : Channel = null</b>
+<b class="nc">&nbsp;      println(&quot;Subscription List :-&quot;)</b>
+<b class="nc">&nbsp;      var count : Int = 0</b>
+<b class="nc">&nbsp;      var totalSubscriptionCost : Int = 0</b>
+<b class="nc">&nbsp;      for (subscription &lt;- subscriptionList) {</b>
+<b class="nc">&nbsp;        channel = ChannelService.getChannelById(subscription.getChannelId())</b>
+<b class="nc">&nbsp;        val channelName: String = channel.getChannelName()</b>
+<b class="nc">&nbsp;        val channelNumber: String = channel.getChannelNumber()</b>
+<b class="nc">&nbsp;        val subscriptionCost: Int = subscription.getPrice()</b>
+<b class="nc">&nbsp;        val startDate: Date = subscription.getStartDate()</b>
+<b class="nc">&nbsp;        val expiryDate: Date = subscription.getExpiryDate()</b>
+&nbsp;
+<b class="nc">&nbsp;        count += 1</b>
+<b class="nc">&nbsp;        totalSubscriptionCost += subscriptionCost</b>
+&nbsp;
+<b class="nc">&nbsp;        println(s&quot;$count -- Channel Name = $channelName, Channel Number = $channelNumber, &quot; +</b>
+<b class="nc">&nbsp;          s&quot;Subscription Amount = Rs. $subscriptionCost, Start Date = $startDate, &quot; +</b>
+<b class="nc">&nbsp;          s&quot;Expiry Date = $expiryDate &quot;)</b>
+<b class="nc">&nbsp;      }</b>
+<b class="nc">&nbsp;      println(s&quot;Total Monthly Subscription Cost = Rs. $totalSubscriptionCost&quot;)</b>
+&nbsp;    }
+&nbsp;  }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-12-08 11:47</div>
+</div>
+</body>
+</html>

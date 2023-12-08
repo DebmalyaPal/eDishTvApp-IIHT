@@ -5,30 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a07d959-4588-48d5-9ee7-addfc0487e85" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/controller/Controller.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/controller/Controller.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/AdminDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/AdminDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/ChannelDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/ChannelDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/SubscriptionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/SubscriptionDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/TransactionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/TransactionDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/UserDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/UserDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/dao/WalletDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/WalletDao.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/AdminService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/AdminService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/ChannelService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/ChannelService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/SubscriptionService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/SubscriptionService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/TransactionService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/TransactionService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/UserService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/UserService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/WalletService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/service/WalletService.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/samples/junit.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/samples/junit.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/samples/scalatest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/samples/scalatest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/SubscriptionDao.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/edishtv/repository/SubscriptionDao.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/com/edishtv/repository/AdminDaoTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/edishtv/repository/AdminDaoTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/samples/junit.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/samples/scalatest.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/samples/specs.scala" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\2130359\OneDrive - Cognizant\Desktop\GitHub Projects\eDishTvApp-IIHT\eDishTvApp\htmlReport" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -43,7 +35,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -67,21 +59,8 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/2130359/OneDrive - Cognizant/Desktop/GitHub Projects/eDishTvApp-IIHT/eDishTvApp&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.com.edishtv.App">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.App" />
-      <module name="eDishTvApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.edishtv.App" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.edishtv.App" />
       <module name="eDishTvApp" />
       <extension name="coverage">
@@ -94,10 +73,78 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ScalaTests in 'edishtv'" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="eDishTvApp" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="All in package" />
+      <option name="classBuf">
+        <list>
+          <option value="com.edishtv.service.AdminServiceTest" />
+          <option value="com.edishtv.service.ChannelServiceTest" />
+        </list>
+      </option>
+      <option name="testPackagePath" value="com.edishtv" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScalaTests in 'scala'" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="eDishTvApp" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="All in package" />
+      <option name="classBuf">
+        <list>
+          <option value="com.edishtv.service.UserServiceTest" />
+          <option value="com.edishtv.service.AdminServiceTest" />
+          <option value="com.edishtv.service.ChannelServiceTest" />
+        </list>
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="eDishTvApp" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="com.edishtv.service.UserServiceTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.Valid User Login" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="eDishTvApp" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="com.edishtv.service.UserServiceTest" />
+      <option name="testName" value="Valid User Login" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.edishtv.App" />
         <item itemvalue="Application.App" />
+        <item itemvalue="ScalaTest.ScalaTests in 'scala'" />
+        <item itemvalue="ScalaTest.UserServiceTest" />
+        <item itemvalue="ScalaTest.UserServiceTest.Valid User Login" />
+        <item itemvalue="ScalaTest.ScalaTests in 'edishtv'" />
       </list>
     </recent_temporary>
   </component>
@@ -125,5 +172,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/eDishTvApp$ChannelServiceTest.ic" NAME="ChannelServiceTest Coverage Results" MODIFIED="1702015500470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/eDishTvApp$ScalaTests_in__edishtv_.ic" NAME="ScalaTests in 'edishtv' Coverage Results" MODIFIED="1702015701877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/eDishTvApp$ScalaTests_in__scala_.ic" NAME="ScalaTests in 'scala' Coverage Results" MODIFIED="1702016167258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

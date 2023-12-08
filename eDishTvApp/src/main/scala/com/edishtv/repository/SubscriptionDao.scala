@@ -52,19 +52,19 @@ object SubscriptionDao {
       //val expiryDate : Date =
 
       // Deleting all outdated subscriptions
-      var query: String = s"DELETE FROM subscription WHERE CURDATE() > expiry_date;"
+      var query: String = "DELETE FROM subscription WHERE CURDATE() > expiry_date;"
       statement.executeUpdate(query)
 
       // Checking if the user has already subscribed to the channel
-      query = s"SELECT * FROM subscription " +
+      query = "SELECT * FROM subscription " +
         s"WHERE user_id=$userId AND channel_id=$channelId AND " +
-        s"start_date <= CURDATE() AND CURDATE() <= expiry_date;"
+        "start_date <= CURDATE() AND CURDATE() <= expiry_date;"
       val resultSet : ResultSet = statement.executeQuery(query)
       if (resultSet.next())
         isSuccess = false
       else {
         //Inserting subscription record into 'subscription' table
-        query = s"INSERT INTO subscription (user_id, channel_id, cost, start_date, expiry_date) VALUES " +
+        query = "INSERT INTO subscription (user_id, channel_id, cost, start_date, expiry_date) VALUES " +
           s"($userId, $channelId, $cost, CURDATE(), DATE_ADD(CURDATE(), INTERVAL $totalNumberOfDays DAY));"
         statement.executeUpdate(query)
         isSuccess = true
@@ -87,7 +87,7 @@ object SubscriptionDao {
 
       establishConnection()
       // Checking if user is already subscribed to the channel to unsubscribe
-      var query: String = s"SELECT * FROM subscription " +
+      var query: String = "SELECT * FROM subscription " +
         s"WHERE user_id=$userId AND channel_id=$channelId;"
       val resultSet: ResultSet = statement.executeQuery(query)
       if (resultSet.next()) {
@@ -114,7 +114,7 @@ object SubscriptionDao {
     try {
       val userId : Int = user.getUserId()
       var subscription : Subscription = null
-      val query : String = s"SELECT * FROM subscription " +
+      val query : String = "SELECT * FROM subscription " +
         s"WHERE user_id=$userId AND CURDATE() <= expiry_date;"
 
       establishConnection()
